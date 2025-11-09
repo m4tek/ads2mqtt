@@ -1,0 +1,15 @@
+[Unit]
+Description=ADS2MQTT Python Service for %i
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/adstools/
+Environment=VIRTUAL_ENV=/opt/adstools/venv
+ExecStart=/opt/adstools/venv/bin/python3 /opt/adstools/pyads_proxy.py %i.toml
+Restart=on-failure
+RestartSec=30
+
+
+[Install]
+WantedBy=multi-user.target
+
